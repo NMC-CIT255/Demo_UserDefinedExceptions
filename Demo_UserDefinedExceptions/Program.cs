@@ -10,27 +10,46 @@ namespace Demo_UserDefinedExceptions
     {
         static void Main(string[] args)
         {
-            try
+            int row, column;
+            bool validMove = false;
+            bool playingRound = true;
+
+            Gameboard myGameboard = new Gameboard();
+
+            while (playingRound)
             {
-                Divide(5, 0);
-            }
-            catch (DivideByZeroException ex)
-            {
-                Console.WriteLine("I think you tried to divide by zero!");
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                Console.WriteLine("I will be sure to write this no matter what.");
+
             }
 
+            while (!validMove)
+            {
+                Console.Write("Row:");
+                row = int.Parse(Console.ReadLine());
+                Console.Write("Column:");
+                column = int.Parse(Console.ReadLine());
+
+                try
+                {
+                    myGameboard.SetPlayerPiece(new GameboardPosition(row, column), Gameboard.PlayerPiece.O);
+                }
+                catch (PositionChoiceOutOfRangeException ex)
+                {
+                    Console.WriteLine("I think you tried an illegal move!");
+                    Console.WriteLine(ex.Message);
+                }
+                catch (PositionChoiceTakenException ex)
+                {
+                    Console.WriteLine("I think you tried an illegal move!");
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    Console.WriteLine("I will be sure to write this no matter what.");
+                }
+            }
 
             Console.ReadKey();
         }
 
-        static void Divide(int a, int b)
-        {
-            Console.WriteLine(a / b);
-        }
     }
 }
