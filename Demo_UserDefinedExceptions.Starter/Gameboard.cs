@@ -226,31 +226,17 @@ namespace Demo_UserDefinedExceptions
         /// <param name="PlayerPiece"></param>
         public void SetPlayerPiece(GameboardPosition gameboardPosition, PlayerPiece PlayerPiece)
         {
-            //
-            // Generate a list of valid integer values to test the player input against.
-            //
             List<int> validRowsColumns = new List<int>();
             validRowsColumns = Enumerable.Range(1, MAX_NUM_OF_ROWS_COLUMNS).ToList();
 
-            //
-            // Player entered an invalid integer for a row and/or column value.
-            //
             if (!validRowsColumns.Contains(gameboardPosition.Row) || !validRowsColumns.Contains(gameboardPosition.Column))
             {
                 throw new PositionChoiceOutOfRangeException("Values for rows and columns must be between 1 and " + MAX_NUM_OF_ROWS_COLUMNS);
             }
-
-            //
-            // Player requested a position on the board that is currently taken.
-            //
             else if (!GameboardPositionAvailable(gameboardPosition))
             {
                 throw new PositionChoiceTakenException("The position is currently taken.");
             }
-
-            //
-            // Player requested a valid position on the game board.
-            //
             else
             {
                 //
