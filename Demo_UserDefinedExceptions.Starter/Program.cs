@@ -53,33 +53,8 @@ namespace Demo_UserDefinedExceptions
                     column = int.Parse(Console.ReadLine());
 
                     //
-                    // try to assign the player choice to the game board
+                    // insert try/catch/catch block here
                     //
-                    try
-                    {
-                        myGameboard.SetPlayerPiece(new GameboardPosition(row, column), Gameboard.PlayerPiece.O);
-                        validMove = true;
-                    }
-                    // The player has requested a position with the row and/or column value out of range
-                    catch (PositionChoiceOutOfRangeException ex)
-                    {
-                        Console.WriteLine("I think you tried an illegal move!");
-
-                        //
-                        // display message from user-defined exception
-                        //
-                        Console.WriteLine(ex.Message);
-                    }
-                    // The player has requested a position that is already taken on the game board
-                    catch (PositionChoiceTakenException ex)
-                    {
-                        Console.WriteLine("I think you tried an illegal move!");
-
-                        //
-                        // display message from user-defined exception
-                        //
-                        Console.WriteLine(ex.Message);
-                    }
                 }
             }
         }

@@ -1,0 +1,4 @@
+In GameExceptions.cs: add PositionChoiceOutOfRangeException and PositionChoiceTakenException
+In Gameboard.SetPlayerPiece: generate list of valid integers for rows and columns
+In Gameboard.SetPlayerPiece: add code to validate the player's gameboardPosition object
+Build out the try/catch/catch block

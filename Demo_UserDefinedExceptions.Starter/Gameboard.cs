@@ -226,30 +226,15 @@ namespace Demo_UserDefinedExceptions
         /// <param name="PlayerPiece"></param>
         public void SetPlayerPiece(GameboardPosition gameboardPosition, PlayerPiece PlayerPiece)
         {
+            //
+            // generate list of valid integers for rows and columns
+            //
             List<int> validRowsColumns = new List<int>();
             validRowsColumns = Enumerable.Range(1, MAX_NUM_OF_ROWS_COLUMNS).ToList();
 
-            if (!validRowsColumns.Contains(gameboardPosition.Row) || !validRowsColumns.Contains(gameboardPosition.Column))
-            {
-                throw new PositionChoiceOutOfRangeException("Values for rows and columns must be between 1 and " + MAX_NUM_OF_ROWS_COLUMNS);
-            }
-            else if (!GameboardPositionAvailable(gameboardPosition))
-            {
-                throw new PositionChoiceTakenException("The position is currently taken.");
-            }
-            else
-            {
-                //
-                // Row and column value adjusted to match array structure
-                // Note: gameboardPosition converted to array index by subtracting 1
-                //
-                _positionState[gameboardPosition.Row - 1, gameboardPosition.Column - 1] = PlayerPiece;
-
-                //
-                // Change game board state to next player
-                //
-                SetNextPlayer();
-            }
+            //
+            // add code to validate the player's gameboardPosition object
+            //
 
         }
 
